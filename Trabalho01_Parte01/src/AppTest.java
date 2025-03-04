@@ -7,9 +7,9 @@ public class AppTest {
     public void testAdicionarProduto() {
         Pedido pedido = new Pedido();
         Produto livro = new Produto("Livro Java", 50.0, 700);
-        
+
         pedido.adicionarProduto(livro);
-        
+
         assertEquals(1, pedido.getListaProdutos().size()); // Verifica se o produto foi adicionado
     }
 
@@ -55,7 +55,7 @@ public class AppTest {
         assertEquals(15.0, valorFrete, 0);
     }
 
-    
+
     @Test (expected = IllegalArgumentException.class)
     public void testCalcularValorEntregaPACErro() {
         Pedido pedido = new Pedido();

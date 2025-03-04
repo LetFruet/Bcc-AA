@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="87b36580-a4c6-4f24-a36e-e0a9528b8ef9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Problema02/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Problema02/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Problema02/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Problema02/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Acao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Problema02/src/Acao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Investidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Problema02/src/Investidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ordem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Problema02/src/Ordem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho01_Parte01/src/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/Diagrama de Classes.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/Entrega.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho01_Parte01/src/Entrega.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/PAC.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho01_Parte01/src/PAC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho01_Parte01/src/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho01_Parte01/src/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/RetiradaLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho01_Parte01/src/RetiradaLocal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Problema01/Sedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho01_Parte01/src/Sedex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testes.java" beforeDir="false" afterPath="$PROJECT_DIR$/Problema02/src/Testes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-4.13.2.jar" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2trZ6dpzUcrIRqZoevydRiDw6jT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="87b36580-a4c6-4f24-a36e-e0a9528b8ef9" name="Changes" comment="" />
+      <created>1741111984272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741111984272</updated>
+    </task>
+    <servers />
+  </component>
+</project>
