@@ -1,87 +1,75 @@
 import java.util.ArrayList;
 import java.util.List;
 
+public class Acao implements Subject {
 
-public class Acao {
+	private String nomeAcao;
+	private Double valorAcao;
+	private List<Observer> observadores = new ArrayList<>();
+	private String mensagemValor;
 
-    private String nomeAcao;
-    private Double valorAcao;
-    private ArrayList<Ordem> ordens = new ArrayList<Ordem>();
-    private ArrayList<Investidor> investidors = new ArrayList<Investidor>();
-    private ArrayList<Ordem> ordensProgramadas = new ArrayList<Ordem>();
-    private List<String> notificacoes = new ArrayList<>(); // Lista para armazenar notificações
+	public Acao(String nomeAcao, Double valorAcao) {
+	this.nomeAcao = nomeAcao;
+	this.valorAcao = valorAcao;
+	}
 
-    public Acao(String nomeAcao, Double valorAcao) {
-        this.nomeAcao = nomeAcao;
-        this.valorAcao = valorAcao;
-        this.ordens = new ArrayList<>();
-        this.investidors = new ArrayList<>();
-        this.ordensProgramadas = new ArrayList<>();
+	public void AtualizarValor(double novoValor) {
+	  this.valorAcao = novoValor;
+	  notifyObserver("O valor da ação " + nomeAcao + " foi atualizado para R$" + valorAcao);
+	  mensagemValor = "O valor da ação " + nomeAcao + " foi atualizado para R$" + valorAcao;
     }
 
-    public void RegistrarOrdem(Ordem ordem) {
-        ordens.add(ordem);
-        VerificarOrdem(ordem);
+    @Override
+    public void registerObserver(Observer observer) {
+        observadores.add(observer);
     }
 
-    public void VerificarOrdem(Ordem novaOrdem) {
-        for(Ordem ordem : new ArrayList<Ordem>(ordens)){
-            if(ordem.getTipoOrdem().equals("Compra") && novaOrdem.getTipoOrdem().equals("Venda") && ordem.getValorAcao() >= novaOrdem.getValorAcao()){
-                ordens.remove(ordem);
-                ordens.remove(novaOrdem);
-                AtualizarValor(novaOrdem.getValorAcao());
-                break;
-            } else if(ordem.getTipoOrdem().equals("Venda") && novaOrdem.getTipoOrdem().equals("Compra") && ordem.getValorAcao() >= novaOrdem.getValorAcao()){
-                ordens.remove(ordem);
-                ordens.remove(novaOrdem);
-                AtualizarValor(novaOrdem.getValorAcao());
-                break;
-            }
-        }
+    @Override
+    public void removeObserver(Observer observer) {
+        observadores.remove(observer);
     }
 
-    public void AtualizarValor(double novoValor){
-        this.valorAcao = novoValor;
-        NotificarInvestidor();
-        processarOrdemProgramada();
+    @Override
+    public void notifyObserver(String mensagem) {
+        for (Observer observer : observadores) {
+            observer.update(mensagem);
+       }
     }
 
-    public void NotificarInvestidor() {
-        for (Investidor investidor : investidors) {
-            String mensagem = "Notificação: " + investidor.getNomeInvestidor() +
-                    " O valor da ação " + nomeAcao + " foi atualizado para R$" + valorAcao;
-            notificacoes.add(mensagem);
-        }
-    }
+	public String getNomeAcao() {
+		return nomeAcao;
+	}
 
-    public List<String> getNotificacoes() {
-        return notificacoes;
-    }
-    public void AdicionarInvestidor(Investidor investidor){
-        investidors.add(investidor);
-    }
+	public void setNomeAcao(String nomeAcao) {
+		this.nomeAcao = nomeAcao;
+	}
 
-    public void AdicionarOrdemProgramada(double valor, String tipo, Investidor investidor){
-        Ordem ordemProgramada = new Ordem(investidor.getNomeInvestidor(), tipo, valor);
-        ordensProgramadas.add(ordemProgramada);
-    }
+	public Double getValorAcao() {
+		return valorAcao;
+	}
 
-    public void processarOrdemProgramada(){
-        List<Ordem> ordensRemover = new ArrayList<>();
-        for(Ordem ordem : ordensProgramadas){
-            if((ordem.getTipoOrdem().equals("Venda") && valorAcao <= ordem.getValorAcao()) || (ordem.getTipoOrdem().equals("Compra") && valorAcao >= ordem.getValorAcao())){
-                RegistrarOrdem(ordem);
-                ordensRemover.add(ordem);
-            }
-        }
-        ordensRemover.removeAll(ordensRemover);
-    }
+	public void setValorAcao(Double valorAcao) {
+		this.valorAcao = valorAcao;
+	}
 
-    public String getNomeAcao() {
-        return nomeAcao;
-    }
+	public List<Observer> getObservadores() {
+		return observadores;
+	}
 
-    public Double getValorAcao() {
-        return valorAcao;
-    }
+	public void setObservadores(List<Observer> observadores) {
+		this.observadores = observadores;
+	}
+
+	public String getMensagemValor() {
+		return mensagemValor;
+	}
+
+	public void setMensagemValor(String mensagemValor) {
+		this.mensagemValor = mensagemValor;
+	}
+	
+	
+    
+    
 }
+

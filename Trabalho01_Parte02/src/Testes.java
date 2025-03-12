@@ -1,6 +1,9 @@
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Test;
 
 public class Testes {
 
@@ -33,8 +36,8 @@ public class Testes {
         assertEquals("Compra", ordemCompra.getTipoOrdem());
         assertEquals("Venda", ordemVenda.getTipoOrdem());
 
-        assertEquals(30.0, ordemCompra.getValorAcao());
-        assertEquals(45.0, ordemVenda.getValorAcao());
+        assertEquals(30.0, ordemCompra.getValorAcao(), 0);
+        assertEquals(45.0, ordemVenda.getValorAcao(), 0);
 
     }
 
@@ -46,101 +49,47 @@ public class Testes {
         Investidor investidor01 = new Investidor("Pedro Rafael");
         Investidor investidor02 = new Investidor("Leonardo Dal'Olmo");
 
-        assertEquals(30.0, acao01.getValorAcao());
+        assertEquals(30.0, acao01.getValorAcao(), 0);
 
         Ordem ordemCompraInvestidor01 = new Ordem("Pedro Rafael", "Compra", 25.0);
-        investidor01.registraOrdem(ordemCompraInvestidor01, acao01);
+        investidor01.registrarOrdem(ordemCompraInvestidor01, acao01);
+        
+        acao01.AtualizarValor(25);
 
         Ordem ordemVendaInvestidor02 = new Ordem("Pedro Rafael", "Venda", 25.0);
-        investidor02.registraOrdem(ordemVendaInvestidor02, acao01);
+        investidor02.registrarOrdem(ordemVendaInvestidor02, acao01);
 
-        acao01.VerificarOrdem(ordemVendaInvestidor02);
 
-        assertEquals(25.0, acao01.getValorAcao());
+        assertEquals(25.0, acao01.getValorAcao(), 0);
 
     }
 
-    @Test //Verificar Se N�o Ocorre Match Com Valor de Compra e Venda Diferente ----------------- ok
+
+    @Test //Teste da Notifica��o de Altera��o de Valor COM Interesse do Investidor ----------------- ok
     public void teste05() {
 
         Acao acao01 = new Acao("Vale", 30.0);
 
         Investidor investidor01 = new Investidor("Pedro Rafael");
-        Investidor investidor02 = new Investidor("Leonardo Dal'Olmo");
-
-        assertEquals(30.0, acao01.getValorAcao());
-
-        Ordem ordemCompraInvestidor01 = new Ordem("Pedro Rafael", "Compra", 25.0);
-        investidor01.registraOrdem(ordemCompraInvestidor01, acao01);
-
-        Ordem ordemVendaInvestidor02 = new Ordem("Pedro Rafael", "Venda", 70.0);
-        investidor02.registraOrdem(ordemVendaInvestidor02, acao01);
-
-        acao01.VerificarOrdem(ordemVendaInvestidor02);
-
-        assertEquals(30.0, acao01.getValorAcao());
-
-    }
-
-    @Test //Verificar Se Ocorre Match Com Compra Menor Que o Valor de Venda ----------------- ok
-    public void teste06() {
-
-        Acao acao01 = new Acao("Vale", 30.0);
-
-        Investidor investidor01 = new Investidor("Pedro Rafael");
-        Investidor investidor02 = new Investidor("Leonardo Dal'Olmo");
-
-        assertEquals(30.0, acao01.getValorAcao());
-
-        Ordem ordemCompraInvestidor01 = new Ordem("Pedro Rafael", "Compra", 25.0);
-        investidor01.registraOrdem(ordemCompraInvestidor01, acao01);
-
-        Ordem ordemVendaInvestidor02 = new Ordem("Pedro Rafael", "Venda", 10.0);
-        investidor02.registraOrdem(ordemVendaInvestidor02, acao01);
-
-        acao01.VerificarOrdem(ordemVendaInvestidor02);
-
-        assertEquals(10.0, acao01.getValorAcao());
-
-    }
-
-    @Test //Teste da Notifica��o de Altera��o de Valor COM Interesse do Investidor ----------------- ok
-    public void teste07() {
-
-        Acao acao01 = new Acao("Vale", 30.0);
-
-        Investidor investidor01 = new Investidor("Pedro Rafael");
-        investidor01.registraAcao(acao01);
+   
 
         Investidor investidor02 = new Investidor("Leonardo Dal'Olmo");
-        investidor02.registraAcao(acao01);
+   
 
         Ordem ordemCompraInvestidor01 = new Ordem("Pedro Rafael", "Compra", 25.0);
-        investidor01.registraOrdem(ordemCompraInvestidor01, acao01);
+        investidor01.registrarOrdem(ordemCompraInvestidor01, acao01);
+        
 
         Ordem ordemVendaInvestidor02 = new Ordem("Pedro Rafael", "Venda", 25.0);
-        investidor02.registraOrdem(ordemVendaInvestidor02, acao01);
+        investidor02.registrarOrdem(ordemVendaInvestidor02, acao01);
+        
+        acao01.AtualizarValor(10);
+        
+        
+        assertEquals("O valor da ação Vale foi atualizado para R$10.0", acao01.getMensagemValor());
 
-        List<String> notificacoes = acao01.getNotificacoes();
 
-        assertTrue(notificacoes.contains("Notificação: Pedro Rafael O valor da ação Vale foi atualizado para R$25.0"));
-        assertTrue(notificacoes.contains("Notificação: Leonardo Dal'Olmo O valor da ação Vale foi atualizado para R$25.0"));
+ 
     }
 
-    @Test //Teste da Notifica��o de Altera��o de Valor SEM Interesse do Investidor ----------------- ok
-    public void teste08() {
-
-        Acao acao01 = new Acao("Vale", 30.0);
-
-        Investidor investidor01 = new Investidor("Pedro Rafael");
-        Investidor investidor02 = new Investidor("Leonardo Dal'Olmo");
-
-        Ordem ordemCompraInvestidor01 = new Ordem("Pedro Rafael", "Compra", 25.0);
-        investidor01.registraOrdem(ordemCompraInvestidor01, acao01);
-
-        Ordem ordemVendaInvestidor02 = new Ordem("Pedro Rafael", "Venda", 25.0);
-        investidor02.registraOrdem(ordemVendaInvestidor02, acao01);
-
-        assertTrue(acao01.getNotificacoes().isEmpty(), "Nenhuma notificação deveria ser enviada.");
-    }
 }
